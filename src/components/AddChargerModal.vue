@@ -104,16 +104,19 @@ function resetForm() {
 
 async function submit() {
   try {
-    const response = await fetch('/api/charging-stations', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        Connection: 'keep-alive',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
+    const response = await fetch(
+      'https://evoltsoft-backend-0kyi.onrender.com/api/charging-stations',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          Connection: 'keep-alive',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: JSON.stringify(newCharger.value),
       },
-      body: JSON.stringify(newCharger.value),
-    })
+    )
 
     if (!response.ok) {
       throw new Error('Failed to add charger')

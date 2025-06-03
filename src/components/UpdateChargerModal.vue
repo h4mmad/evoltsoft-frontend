@@ -123,16 +123,19 @@ function resetForm() {
 // --- Submit Handler ---
 async function submit() {
   try {
-    const response = await fetch(`/api/charging-stations/${updateCharger.value.id}`, {
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        Connection: 'keep-alive',
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
+    const response = await fetch(
+      `https://evoltsoft-backend-0kyi.onrender.com/api/charging-stations/${updateCharger.value.id}`,
+      {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          Connection: 'keep-alive',
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: JSON.stringify(updateCharger.value),
       },
-      body: JSON.stringify(updateCharger.value),
-    })
+    )
 
     if (!response.ok) {
       throw new Error('Failed to update charger')

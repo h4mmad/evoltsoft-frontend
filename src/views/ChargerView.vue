@@ -134,12 +134,15 @@ function editCharger(charger: Charger) {
 
 async function deleteCharger(charger: Charger) {
   try {
-    const response = await fetch(`/api/charging-stations/${charger.id}`, {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
+    const response = await fetch(
+      `https://evoltsoft-backend-0kyi.onrender.com/api/charging-stations/${charger.id}`,
+      {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
       },
-    })
+    )
 
     if (!response.ok) {
       throw new Error('Failed to delete charger')
@@ -158,12 +161,15 @@ async function fetchChargers() {
     chargers.value = [] // Clear previous chargers
     err.value = '' // Clear previous error
 
-    const response = await fetch('/api/charging-stations', {
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`,
+    const response = await fetch(
+      'https://evoltsoft-backend-0kyi.onrender.com/api/charging-stations',
+      {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
       },
-    })
+    )
 
     const chargerResponse = await response.json()
     if (!response.ok) {
