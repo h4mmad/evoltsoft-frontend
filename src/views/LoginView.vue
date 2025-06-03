@@ -28,7 +28,7 @@ const router = useRouter()
 const submitLogin = async () => {
   error.value = '' // Clear previous error
   try {
-    const response = await fetch('/api/auth/login', {
+    const response = await fetch('https://evoltsoft-backend-0kyi.onrender.com/api/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

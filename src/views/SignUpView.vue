@@ -41,7 +41,7 @@ const router = useRouter()
 const submitSignUp = async () => {
   error.value = '' // Clear previous error
   try {
-    const response = await fetch('/api/auth/sign-up', {
+    const response = await fetch('https://evoltsoft-backend-0kyi.onrender.com/api/auth/sign-up', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
